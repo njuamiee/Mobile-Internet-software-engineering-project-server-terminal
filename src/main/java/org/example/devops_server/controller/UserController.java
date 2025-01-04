@@ -14,7 +14,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-
     @PostMapping("/register")
     public ResultVO<Boolean> register(@RequestBody UserVO userVO ){
         return ResultVO.buildSuccess(userService.register(userVO));
@@ -24,8 +23,6 @@ public class UserController {
     public ResultVO<String> login(@RequestParam("username") String username, @RequestParam("password") String password){
         return ResultVO.buildSuccess(userService.login(username, password));
     }
-
-
 
     @GetMapping
     public ResultVO<UserVO> getInformation(){

@@ -29,7 +29,6 @@ public class UserVO {
 
     private String password;
 
-
     private Date createTime;
 
 
