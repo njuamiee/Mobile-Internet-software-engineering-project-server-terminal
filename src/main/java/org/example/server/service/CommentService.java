@@ -10,7 +10,6 @@ public interface CommentService {
     Boolean deleteComment(Integer commentId);
     CommentVO getCommentById(Integer commentId);
     List<CommentVO> getCommentsByNew(Integer newId);
-    List<CommentVO> getReplyByComment(Integer commentId);
     Boolean addLikeCount(Integer commentId);
     Boolean subLikeCount(Integer commentId);
 }

@@ -62,17 +62,6 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<CommentVO> getReplyByComment(Integer commentId) {
-        Comment comment = commentRepository.findCommentById(commentId);
-        List<Integer> comments = comment.getReplyCommentList();
-        List<CommentVO> commentVOS = new ArrayList<>();
-        for (Integer commentId1 : comments) {
-            commentVOS.add(commentRepository.findCommentById(commentId1).toVO());
-        }
-        return commentVOS;
-    }
-
-    @Override
     public Boolean addLikeCount(Integer commentId) {
         Comment comment = commentRepository.findCommentById(commentId);
         comment.setLikeCount(comment.getLikeCount()+1);

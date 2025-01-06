@@ -32,10 +32,4 @@ public class CommentController {
     public ResultVO<List<CommentVO>> getCommentsByNew(@PathVariable("newId") Integer newId){
         return ResultVO.buildSuccess(commentService.getCommentsByNew(newId));
     }
-
-    //获取某评论的回复
-    @GetMapping("/reply/{commentId}")
-    public ResultVO<List<CommentVO>> getReplyByComment(@PathVariable("commentId") Integer commentId){
-        return ResultVO.buildSuccess(commentService.getReplyByComment(commentId));
-    }
 }
