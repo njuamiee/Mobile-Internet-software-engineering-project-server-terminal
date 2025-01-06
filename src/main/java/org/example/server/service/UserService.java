@@ -7,8 +7,8 @@ import org.example.server.vo.UserVO;
 import java.util.List;
 
 public interface UserService {
-    Boolean register(UserVO userVO);
-    String login(String phone, String password);
+    Boolean register(UserVO userVO) throws Exception;
+    String login(String phone, String password) throws Exception;
     UserVO getInformation();
     Boolean updateInformation(UserVO userVO);
 

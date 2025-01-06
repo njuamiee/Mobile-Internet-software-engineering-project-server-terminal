@@ -1,6 +1,7 @@
 package org.example.server.serviceImpl;
 
 import org.example.server.Exception.Exception;
+import org.example.server.Util.AESUtil;
 import org.example.server.Util.SecurityUtil;
 import org.example.server.Util.TokenUtil;
 import org.example.server.enums.RoleEnum;
@@ -36,31 +37,31 @@ public class UserServiceImpl implements UserService {
     TokenUtil tokenUtil;
 
     @Autowired
+    AESUtil aesUtil;
+
+    @Autowired
     SecurityUtil securityUtil;
     
     @Override
-    public Boolean register(UserVO userVO) {
+    public Boolean register(UserVO userVO) throws java.lang.Exception {
         User user = userRepository.findByUsername(userVO.getUsername());
-
         if (user != null) {
             throw Exception.UserAlreadyExists();
         }
-
         User newUser = userVO.toPO();
-
         newUser.setCreateTime(new Date());
         newUser.setRole(RoleEnum.USER);
+        String password = aesUtil.encrypt(userVO.getPassword());
+        newUser.setPassword(password);
         userRepository.save(newUser);
         return true;
     }
 
     @Override
-    public String login(String usernameOrEmail, String password) {
+    public String login(String usernameOrEmail, String password) throws java.lang.Exception {
         User user = userRepository.findByUsername(usernameOrEmail);
-
-        System.out.println("433434243242");
         String Password=user.getPassword();
-        if (Objects.equals(password, Password)) {
+        if (Objects.equals(aesUtil.decrypt(Password), password)) {
             return tokenUtil.getToken(user);
         }else {
             throw Exception.usernameOrPasswordError();

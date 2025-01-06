@@ -19,12 +19,12 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/register")
-    public ResultVO<Boolean> register(@RequestBody UserVO userVO ){
+    public ResultVO<Boolean> register(@RequestBody UserVO userVO ) throws Exception {
         return ResultVO.buildSuccess(userService.register(userVO));
     }
 
     @PostMapping("/login")
-    public ResultVO<String> login(@RequestParam("username") String username, @RequestParam("password") String password){
+    public ResultVO<String> login(@RequestParam("username") String username, @RequestParam("password") String password) throws Exception {
         return ResultVO.buildSuccess(userService.login(username, password));
     }
 
