@@ -24,8 +24,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResultVO<String> login(@RequestParam("username") String username, @RequestParam("password") String password) throws Exception {
-        return ResultVO.buildSuccess(userService.login(username, password));
+    public ResultVO<String> login(@RequestBody UserVO userVO ) throws Exception {
+        return ResultVO.buildSuccess(userService.login(userVO.getUsername(), userVO.getPassword()));
     }
 
     @GetMapping
