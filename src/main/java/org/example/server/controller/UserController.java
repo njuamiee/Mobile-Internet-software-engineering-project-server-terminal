@@ -39,7 +39,7 @@ public class UserController {
     }
 
     //获取用户创建的新闻
-    @GetMapping("/user/{userId}")
+    @GetMapping("/user/{userId}/news")
     public ResultVO<List<NewVO>> getNewsByUser(@PathVariable("userId") Integer userId){
         return ResultVO.buildSuccess(userService.getNewsByUserCreated(userId));
     }
@@ -81,7 +81,7 @@ public class UserController {
     }
 
     //获取用户的所有评论
-    @GetMapping("/user/{userId}")
+    @GetMapping("/user/{userId}/comments")
     public ResultVO<List<CommentVO>> getCommentsByUser(@PathVariable("userId") Integer userId){
         return ResultVO.buildSuccess(userService.getCommentsByUserCreated(userId));
     }

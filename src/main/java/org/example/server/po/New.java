@@ -48,7 +48,7 @@ public class New {
 
     //新闻图片列表
     @ElementCollection
-    @CollectionTable(name = "img_url_list", joinColumns = @JoinColumn(name = "img_url"))
+    @CollectionTable(name = "img_url_list", joinColumns = @JoinColumn(name = "new_id"))
     @Column(name = "img_url")
     private List<Integer> imgurlList;
 
