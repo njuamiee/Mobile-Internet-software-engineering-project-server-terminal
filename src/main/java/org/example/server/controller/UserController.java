@@ -34,8 +34,8 @@ public class UserController {
 //    }
 
     @GetMapping
-    public ResultVO<UserVO> getUserInfoById(@RequestParam("Id") Integer id){
-        return ResultVO.buildSuccess(userService.getUserInfoById(id));
+    public ResultVO<UserVO> getUserInfoById(@RequestBody UserVO userVO){
+        return ResultVO.buildSuccess(userService.getUserInfoById(userVO.getId()));
     }
     @PostMapping
     public ResultVO<Boolean> updateInformation(@RequestBody UserVO userVO){
