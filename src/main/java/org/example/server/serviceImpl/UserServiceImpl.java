@@ -87,6 +87,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserVO getUserInfoById(Integer id) {
+        User user = userRepository.findUserById(id);
+        return user.toVO();
+    }
+
+    @Override
     public Boolean addNewToUserCreated(Integer newId, Integer userId) {
         User user = userRepository.findUserById(userId);
         List<Integer> news = user.getCreateNewsList();

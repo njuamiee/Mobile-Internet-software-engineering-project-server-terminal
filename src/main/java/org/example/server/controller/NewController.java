@@ -27,6 +27,8 @@ public class NewController {
         return ResultVO.buildSuccess(newService.deleteNew(id));
     }
 
+//    @GetMapping
+//    public ResultVO<List<NewVO>> getpics(){}
     //获取所有新闻
     @GetMapping
     public ResultVO<List<NewVO>> getAllNews(){

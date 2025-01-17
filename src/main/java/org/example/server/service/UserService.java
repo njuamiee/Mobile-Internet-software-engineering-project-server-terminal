@@ -12,7 +12,7 @@ public interface UserService {
     UserVO login(UserVO userVO) throws Exception;
     UserVO getInformation();
     Boolean updateInformation(UserVO userVO);
-
+    UserVO getUserInfoById(Integer id);
     //添加到用户创建的新闻中
     Boolean addNewToUserCreated(Integer newId, Integer userId);
     //从用户创建的新闻中删除

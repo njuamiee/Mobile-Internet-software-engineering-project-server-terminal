@@ -28,11 +28,15 @@ public class UserController {
         return ResultVO.buildSuccess(userService.login(userVO));
     }
 
-    @GetMapping
-    public ResultVO<UserVO> getInformation(){
-        return ResultVO.buildSuccess(userService.getInformation());
-    }
+//    @GetMapping
+//    public ResultVO<UserVO> getInformation(){
+//        return ResultVO.buildSuccess(userService.getInformation());
+//    }
 
+    @GetMapping
+    public ResultVO<UserVO> getUserInfoById(@RequestParam("Id") Integer id){
+        return ResultVO.buildSuccess(userService.getUserInfoById(id));
+    }
     @PostMapping
     public ResultVO<Boolean> updateInformation(@RequestBody UserVO userVO){
         return ResultVO.buildSuccess(userService.updateInformation(userVO));
