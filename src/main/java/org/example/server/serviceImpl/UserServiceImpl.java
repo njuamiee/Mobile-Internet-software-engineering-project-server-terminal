@@ -58,15 +58,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String login(String usernameOrEmail, String password) throws java.lang.Exception {
-        User user = userRepository.findByUsername(usernameOrEmail);
+    public UserVO login(UserVO userIfo) throws java.lang.Exception {
+        //String usernameOrEmail, String password
+
+        User user = userRepository.findByUsername(userIfo.getUsername());
+        if (user == null) {
+            throw Exception.UserNotExist();
+        }
         String Password=user.getPassword();
-        if (Objects.equals(aesUtil.decrypt(Password), password)) {
-            return tokenUtil.getToken(user);
+        if (Objects.equals(aesUtil.decrypt(Password), userIfo.getPassword())) {
+            return user.toVO();
         }else {
             throw Exception.usernameOrPasswordError();
         }
+
     }
+
+
 
     @Override
     public UserVO getInformation() {

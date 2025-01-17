@@ -1,5 +1,6 @@
 package org.example.server.service;
 
+import org.example.server.po.User;
 import org.example.server.vo.CommentVO;
 import org.example.server.vo.NewVO;
 import org.example.server.vo.UserVO;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public interface UserService {
     Boolean register(UserVO userVO) throws Exception;
-    String login(String phone, String password) throws Exception;
+    UserVO login(UserVO userVO) throws Exception;
     UserVO getInformation();
     Boolean updateInformation(UserVO userVO);
 

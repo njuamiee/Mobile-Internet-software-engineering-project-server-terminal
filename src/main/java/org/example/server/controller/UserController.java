@@ -24,8 +24,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResultVO<String> login(@RequestBody UserVO userVO ) throws Exception {
-        return ResultVO.buildSuccess(userService.login(userVO.getUsername(), userVO.getPassword()));
+    public ResultVO<UserVO> login(@RequestBody UserVO userVO) throws Exception {
+        return ResultVO.buildSuccess(userService.login(userVO));
     }
 
     @GetMapping
@@ -39,7 +39,7 @@ public class UserController {
     }
 
     //获取用户创建的新闻
-    @GetMapping("/user/{userId}/news")
+    @GetMapping("/user/{userId}")
     public ResultVO<List<NewVO>> getNewsByUser(@PathVariable("userId") Integer userId){
         return ResultVO.buildSuccess(userService.getNewsByUserCreated(userId));
     }
@@ -80,11 +80,11 @@ public class UserController {
         return ResultVO.buildSuccess(userService.cancelCollectNew(newId, userId));
     }
 
-    //获取用户的所有评论
-    @GetMapping("/user/{userId}/comments")
-    public ResultVO<List<CommentVO>> getCommentsByUser(@PathVariable("userId") Integer userId){
-        return ResultVO.buildSuccess(userService.getCommentsByUserCreated(userId));
-    }
+//    //获取用户的所有评论
+//    @GetMapping("/user/{userId}")
+//    public ResultVO<List<CommentVO>> getCommentsByUser(@PathVariable("userId") Integer userId){
+//        return ResultVO.buildSuccess(userService.getCommentsByUserCreated(userId));
+//    }
 
     //用户点赞评论
     @GetMapping("/like/{commentId}/{userId}")
