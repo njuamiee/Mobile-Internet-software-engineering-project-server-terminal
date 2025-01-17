@@ -15,10 +15,13 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //登录与注册接口取消拦截
-        registry.addInterceptor(loginInterceptor)
+       /* registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/api/users/register")
                 .excludePathPatterns("/api/users/login")
-                .order(1);
+                .excludePathPatterns("/api/news")
+                .excludePathPatterns("/api/news/create")
+                .excludePathPatterns("/oss/upload")
+                .order(1);*/
     }
 }

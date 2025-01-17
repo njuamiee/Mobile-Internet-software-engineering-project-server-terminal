@@ -30,7 +30,7 @@ public class NewController {
 //    @GetMapping
 //    public ResultVO<List<NewVO>> getpics(){}
     //获取所有新闻
-    @GetMapping
+    @GetMapping("/all")
     public ResultVO<List<NewVO>> getAllNews(){
         return ResultVO.buildSuccess(newService.getAllNews());
     }

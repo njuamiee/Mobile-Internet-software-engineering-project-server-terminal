@@ -70,7 +70,7 @@ public class New {
     public NewVO toVO() {
         NewVO newVO = new NewVO();
         newVO.setId(this.id);
-        newVO.setType(this.type);
+        newVO.setType(String.valueOf(this.type));
         newVO.setCreateTime(this.createTime);
         newVO.setAuthorId(this.authorId);
         newVO.setTitle(this.title);

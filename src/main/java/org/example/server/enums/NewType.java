@@ -1,6 +1,11 @@
 package org.example.server.enums;
 
 public enum NewType {
-    //军事，政治，经济，文化，体育，娱乐
-    MILITARY, POLITICAL, ECONOMIC, CULTURAL, SPORTS, ENTERTAINMENT;
+    //国内，国际，娱乐，军事，体育，科技
+    DOMESTIC,
+    INTERNATIONAL,
+    ENTERTAINMENT,
+    MILITARY,
+    SPORTS,
+    TECHNOLOGY
 }

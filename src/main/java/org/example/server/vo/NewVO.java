@@ -20,7 +20,7 @@ public class NewVO {
 
     private Integer authorId;
 
-    private NewType type;
+    private String type;
 
     private String title;
 
@@ -28,10 +28,29 @@ public class NewVO {
 
     private List<Integer> imgurlList;
 
+    private NewType translateToNewType(String typeStr) {
+        switch (typeStr) {
+            case "国内":
+                return NewType.DOMESTIC;
+            case "国际":
+                return NewType.INTERNATIONAL;
+            case "娱乐":
+                return NewType.ENTERTAINMENT;
+            case "军事":
+                return NewType.MILITARY;
+            case "体育":
+                return NewType.SPORTS;
+            case "科技":
+                return NewType.TECHNOLOGY;
+            default:
+                throw new IllegalArgumentException("Unknown type: " + typeStr);
+        }
+    }
+
     public New toPO() {
         New newPO = new New();
         newPO.setId(this.id);
-        newPO.setType(this.type);
+        newPO.setType(translateToNewType(this.type));
         newPO.setCreateTime(this.createTime);
         newPO.setAuthorId(this.authorId);
         newPO.setTitle(this.title);

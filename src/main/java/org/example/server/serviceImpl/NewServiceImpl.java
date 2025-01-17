@@ -25,9 +25,14 @@ public class NewServiceImpl implements NewService {
     @Autowired
     OssUtil ossUtil;
 
+
+
     @Override
     public Boolean createNew(NewVO newVO) {
+
+
         New newPO = newVO.toPO();
+
         newRepository.save(newPO);
         userService.addNewToUserCreated(newPO.getId(),newPO.getAuthorId());
         return true;
