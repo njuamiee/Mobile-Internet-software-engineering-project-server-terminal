@@ -6,6 +6,8 @@ import lombok.Setter;
 import org.example.server.enums.NewType;
 import org.example.server.po.New;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +23,8 @@ public class NewVO {
     private Integer authorId;
 
     private String type;
+
+    private Integer likeCount;
 
     private String title;
 
@@ -51,6 +55,7 @@ public class NewVO {
         New newPO = new New();
         newPO.setId(this.id);
         newPO.setType(translateToNewType(this.type));
+        newPO.setLikeCount(this.likeCount);
         newPO.setCreateTime(this.createTime);
         newPO.setAuthorId(this.authorId);
         newPO.setTitle(this.title);
