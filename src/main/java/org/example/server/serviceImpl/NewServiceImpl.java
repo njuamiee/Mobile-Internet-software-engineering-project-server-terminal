@@ -30,27 +30,27 @@ public class NewServiceImpl implements NewService {
     @Override
     public Boolean createNew(NewVO newVO) {
         New newPO = newVO.toPO();
-        switch (newVO.getType()) {
-            case "国内":
-                newPO.setType(NewType.DOMESTIC);
-                break;
-            case "国际":
-                newPO.setType(NewType.INTERNATIONAL);
-                break;
-            case "娱乐":
-                newPO.setType(NewType.ENTERTAINMENT);
-                break;
-            case "军事":
-                newPO.setType(NewType.MILITARY);
-                break;
-            case "体育":
-                newPO.setType(NewType.SPORTS);
-                break;
-            case "科技":
-                newPO.setType(NewType.TECHNOLOGY);
-                break;
-            default:break;
-        }
+//        switch (newVO.getType()) {
+//            case "国内":
+//                newPO.setType(NewType.DOMESTIC);
+//                break;
+//            case "国际":
+//                newPO.setType(NewType.INTERNATIONAL);
+//                break;
+//            case "娱乐":
+//                newPO.setType(NewType.ENTERTAINMENT);
+//                break;
+//            case "军事":
+//                newPO.setType(NewType.MILITARY);
+//                break;
+//            case "体育":
+//                newPO.setType(NewType.SPORTS);
+//                break;
+//            case "科技":
+//                newPO.setType(NewType.TECHNOLOGY);
+//                break;
+//            default:break;
+//        }
 
         newRepository.save(newPO);
         userService.addNewToUserCreated(newPO.getId(),newPO.getAuthorId());
