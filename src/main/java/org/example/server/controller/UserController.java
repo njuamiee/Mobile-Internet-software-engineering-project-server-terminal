@@ -35,7 +35,7 @@ public class UserController {
 //        return ResultVO.buildSuccess(userService.getInformation());
 //    }
 
-    @PostMapping
+    @PostMapping("/Info")
     public ResultVO<UserVO> getUserInfoById(@RequestBody UserVO userVO){
         return ResultVO.buildSuccess(userService.getUserInfoById(userVO.getId()));
     }
