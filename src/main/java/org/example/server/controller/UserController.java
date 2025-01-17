@@ -18,6 +18,24 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    //用户点赞新闻
+    @PostMapping("/like/{newId}/{userId}")
+    public ResultVO<Boolean> likeNew(@PathVariable("newId") Integer newId, @PathVariable("userId") Integer userId){
+        return ResultVO.buildSuccess(userService.likeNew(newId, userId));
+    }
+
+    //用户取消点赞新闻
+    @PostMapping("/unlike/{newId}/{userId}")
+    public ResultVO<Boolean> unlikeNew(@PathVariable("newId") Integer newId, @PathVariable("userId") Integer userId){
+        return ResultVO.buildSuccess(userService.cancelLikeNew(newId, userId));
+    }
+
+    //获取用户创建的新闻
+    @GetMapping("/user/{userId}")
+    public ResultVO<List<NewVO>> getNewsByUser(@PathVariable("userId") Integer userId){
+        return ResultVO.buildSuccess(userService.getNewsByUserCreated(userId));
+    }
+
     @PostMapping("/register")
     public ResultVO<Boolean> register(@RequestBody UserVO userVO ) throws Exception {
         return ResultVO.buildSuccess(userService.register(userVO));
@@ -44,11 +62,6 @@ public class UserController {
         return ResultVO.buildSuccess(userService.updateInformation(userVO));
     }
 
-    //获取用户创建的新闻
-    @GetMapping("/user/{userId}")
-    public ResultVO<List<NewVO>> getNewsByUser(@PathVariable("userId") Integer userId){
-        return ResultVO.buildSuccess(userService.getNewsByUserCreated(userId));
-    }
 
     //获取用户点赞的新闻
     @GetMapping("/like/{userId}")
@@ -62,17 +75,7 @@ public class UserController {
         return ResultVO.buildSuccess(userService.getCollectNews(userId));
     }
 
-    //用户点赞新闻
-    @PostMapping("/like/{newId}/{userId}")
-    public ResultVO<Boolean> likeNew(@PathVariable("newId") Integer newId, @PathVariable("userId") Integer userId){
-        return ResultVO.buildSuccess(userService.likeNew(newId, userId));
-    }
 
-    //用户取消点赞新闻
-    @PostMapping("/unlike/{newId}/{userId}")
-    public ResultVO<Boolean> unlikeNew(@PathVariable("newId") Integer newId, @PathVariable("userId") Integer userId){
-        return ResultVO.buildSuccess(userService.cancelLikeNew(newId, userId));
-    }
 
     //用户收藏新闻
     @PostMapping("/collect/{newId}/{userId}")

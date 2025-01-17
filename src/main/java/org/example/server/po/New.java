@@ -72,6 +72,7 @@ public class New {
         newVO.setId(this.id);
         newVO.setType(String.valueOf(this.type));
         newVO.setCreateTime(this.createTime);
+        newVO.setLikeCount(this.likeCount);
         newVO.setAuthorId(this.authorId);
         newVO.setTitle(this.title);
         newVO.setContent(this.content);
